@@ -2,8 +2,13 @@
 export interface User {
   id: string;
   username: string;
-  role: 'admin' | 'manager' | 'cashier';
-  createdAt: Date;
+  email: string;
+  password_hash: string;
+  full_name: string;
+  role: 'admin' | 'user' | 'cashier';
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface UserSession {
@@ -17,20 +22,29 @@ export interface UserSession {
 export interface Category {
   id: string;
   name: string;
-  parentId?: string;
+  description?: string;
+  parent_id?: string;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface Product {
   id: string;
   name: string;
-  categoryId: string;
+  description?: string;
+  sku?: string;
   barcode?: string;
-  priceBuy: number;
-  priceSell: number;
-  stockMinimum: number;
-  imageUrl?: string;
-  createdAt: Date;
-  updatedAt: Date;
+  category_id?: string;
+  category_name?: string; // From JOIN query
+  purchase_price: number;
+  selling_price: number;
+  stock_quantity: number;
+  min_stock_level: number;
+  unit: string;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
 }
 
 export interface ProductUnit {
@@ -52,12 +66,31 @@ export interface InventoryItem {
 export interface Customer {
   id: string;
   name: string;
-  phone?: string;
   email?: string;
+  phone?: string;
   address?: string;
-  creditLimit: number;
-  totalPurchases: number;
-  createdAt: Date;
+  city?: string;
+  postal_code?: string;
+  customer_type: 'regular' | 'vip' | 'wholesale';
+  credit_limit: number;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
+}
+
+// Supplier Types
+export interface Supplier {
+  id: string;
+  name: string;
+  contact_person?: string;
+  email?: string;
+  phone?: string;
+  address?: string;
+  city?: string;
+  postal_code?: string;
+  is_active: boolean;
+  created_at: string;
+  updated_at: string;
 }
 
 // Sales Types
