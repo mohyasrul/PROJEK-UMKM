@@ -3,7 +3,6 @@ import Button from '@/components/Button';
 import Input from '@/components/Input';
 import Card from '@/components/Card';
 import { useAuthStore } from '@/stores/authStore';
-import { validateEmail } from '@/utils/auth';
 
 interface LoginFormProps {
   onSwitchToRegister?: () => void;
